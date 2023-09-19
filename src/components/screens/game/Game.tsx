@@ -6,7 +6,6 @@ import { TfiReload } from 'react-icons/tfi';
 import { Link, Params, useParams } from 'react-router-dom';
 import { config } from '../../../data/lvls.ts';
 import PopupEndlvl from '../popups/popupEndLvl/PopupEndlvl.tsx';
-import { links } from '../../../data/links.ts';
 
 const Game = () => {
 	const ParamId: Params<string> = useParams();
@@ -40,7 +39,7 @@ const Game = () => {
 			<div className={style.game}>
 				<div className={style.stats}>
 					<div className={style.buttons}>
-						<Link to={links[1]} className={style.back}>
+						<Link to='/colorSort' className={style.back}>
 							Назад
 						</Link>
 						<div className={style.rebase} onClick={() => location.reload()}>
