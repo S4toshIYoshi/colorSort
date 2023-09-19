@@ -6,15 +6,12 @@ import Game from './components/screens/game/Game';
 import End from './components/screens/end/End';
 import Levels from './components/screens/levels/Levels';
 
-import { config } from './data/lvls';
-
 function App() {
 	return (
 		<BrowserRouter>
 			<Routes>
-				<Route path='/' element={<MainLayout />}>
+				<Route path='/colorSort' element={<MainLayout />}>
 					<Route index={true} element={<Start />} />
-					<Route path='game' element={<Game />} />
 					<Route path='game/:id' element={<Game />} />
 					<Route path='end' element={<End />} />
 					<Route path='levels' element={<Levels />} />

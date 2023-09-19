@@ -5,6 +5,7 @@ import clsx from 'clsx';
 import { TfiReload } from 'react-icons/tfi';
 import { Link, Params, useParams } from 'react-router-dom';
 import { config } from '../../../data/lvls.ts';
+import PopupEndlvl from '../popups/popupEndLvl/PopupEndlvl.tsx';
 
 const Game = () => {
 	const ParamId: Params<string> = useParams();
@@ -13,11 +14,12 @@ const Game = () => {
 
 	const [popup, setPopup] = useState(false);
 
-	const [loadNewLvl, setLoadNewlvl] = useState<Array<string>>(['1']);
-
 	const game = useMemo(() => {
-		return new GameLogic(config[ParamId.id ? ParamId.id - 1 : 0]);
-	}, [loadNewLvl]);
+		if (config[ParamId.id ? parseInt(ParamId.id) - 1 : 0]) {
+			return new GameLogic(config[ParamId.id ? parseInt(ParamId.id) - 1 : 0]);
+		}
+		return new GameLogic(config[0]);
+	}, [popup]);
 
 	useEffect(() => {
 		if (select.length >= 2) {
@@ -37,7 +39,7 @@ const Game = () => {
 			<div className={style.game}>
 				<div className={style.stats}>
 					<div className={style.buttons}>
-						<Link to='/' className={style.back}>
+						<Link to='/colorSort' className={style.back}>
 							Назад
 						</Link>
 						<div className={style.rebase} onClick={() => location.reload()}>
@@ -69,25 +71,7 @@ const Game = () => {
 				</div>
 			</div>
 
-			{popup && (
-				<div className={style.popup}>
-					<div className={style.menu}>
-						<div className={style.popuptitle}>Уровень {game.lvl} пройден!</div>
-						<div className={style.popupButtons}>
-							<Link
-								to={`/game/${parseInt(ParamId.id) + 1}`}
-								onClick={() => {
-									setPopup(false);
-									setLoadNewlvl([...loadNewLvl, ParamId.id]);
-								}}
-							>
-								Далее
-							</Link>
-							<Link to='/'>В меню</Link>
-						</div>
-					</div>
-				</div>
-			)}
+			{popup && <PopupEndlvl id={game.lvl} setPopup={setPopup} />}
 		</section>
 	);
 };

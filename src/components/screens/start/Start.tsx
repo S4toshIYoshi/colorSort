@@ -13,12 +13,8 @@ const Start = () => {
 					<Link to='game/1' className={clsx('heading')}>
 						Начать игру
 					</Link>
-					<Link to='levels' className={clsx('heading')}>
-						Выбрать уровень
-					</Link>
-					<Link to='end' className={clsx('heading')}>
-						Статистика
-					</Link>
+					<div className={clsx('heading', 'disable')}>Выбрать уровень</div>
+					<div className={clsx('heading', 'disable')}>Статистика</div>
 				</div>
 			</div>
 		</section>

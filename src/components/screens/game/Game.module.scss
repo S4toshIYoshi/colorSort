@@ -2,12 +2,14 @@
 	width: 80%;
 	height: 80%;
 
-	margin: 0 auto;
+	margin: 150px auto;
 }
 @media (max-width: 768px) {
 	.container {
 		width: 100%;
 		height: 100vh;
+
+		margin: 0 auto;
 	}
 }
 
@@ -176,63 +178,4 @@
 
 .none {
 	background-color: rgba($color: #000000, $alpha: 0);
-}
-
-.popup {
-	position: absolute;
-
-	top: 0;
-	left: 0;
-	right: 0;
-	bottom: 0;
-
-	background-color: rgba($color: #000000, $alpha: 0.5);
-
-	display: flex;
-	align-items: center;
-	justify-content: center;
-}
-
-.menu {
-	background-color: wheat;
-	border: 2px solid black;
-	border-radius: 20px;
-
-	width: 300px;
-	height: 300px;
-
-	padding: 50px;
-
-	display: flex;
-	align-items: center;
-	flex-direction: column;
-	gap: 30px;
-}
-
-.popuptitle {
-	text-align: center;
-	font-size: 30px;
-}
-
-.popupButtons {
-	width: 100%;
-
-	display: flex;
-	justify-content: space-between;
-
-	& a {
-		font-size: 20px;
-		color: black;
-
-		border: 1px solid black;
-		border-radius: 20px;
-
-		padding: 5px 10px;
-
-		transition: transform 0.3s ease-in-out;
-
-		&:hover {
-			transform: scale(1.05);
-		}
-	}
 }

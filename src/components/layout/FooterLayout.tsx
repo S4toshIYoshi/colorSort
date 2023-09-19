@@ -1,9 +1,5 @@
-import React from 'react';
-
-type Props = {};
-
-const FooterLayout = (props: Props) => {
-	return <div>FooterLayout</div>;
+const FooterLayout = () => {
+	return <div style={{ textAlign: 'center' }}>prod. by Kroshechkin</div>;
 };
 
 export default FooterLayout;

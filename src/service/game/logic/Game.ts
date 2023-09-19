@@ -29,8 +29,10 @@ export class GameLogic {
 
 	giveAway(givingId: number, hostId: number) {
 		if (
-			this._bottles[hostId].colors.length > 3 &&
-			this._bottles[hostId].colors[0] !== this._bottles[givingId].colors[0]
+			(this._bottles[hostId].colors.length > 3 &&
+				this._bottles[hostId].colors[0] !==
+					this._bottles[givingId].colors[0]) ||
+			givingId === hostId
 		) {
 			console.log('nope');
 			return 0;
