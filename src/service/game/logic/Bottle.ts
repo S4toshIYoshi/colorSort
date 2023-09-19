@@ -3,7 +3,7 @@ export class Bottle {
 	public closedBottle: boolean;
 
 	constructor(colors: Array<string | null>) {
-		this._colors = colors;
+		this._colors = [...colors];
 		this.closedBottle = false;
 	}
 

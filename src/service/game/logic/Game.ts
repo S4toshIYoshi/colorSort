@@ -7,24 +7,27 @@ export class GameLogic {
 	public coins: number;
 	public lvl: number;
 
+	private _config: IConfig;
 	private _bottles: Array<Bottle>;
 
 	constructor(config: IConfig) {
-		this.complite = config.compite;
-		this.xp = config.xp;
-		this.coins = config.coins;
+		this._config = config;
 
-		this.lvl = config.lvl;
+		this.complite = this._config.compite;
+		this.xp = this._config.xp;
+		this.coins = this._config.coins;
 
-		this._bottles = config.bottles.map(item => new Bottle(item));
+		this.lvl = this._config.lvl;
+
+		this._bottles = this._config.bottles.map(item => new Bottle(item));
 	}
 
-	get bottles() {
+	get bottles(): Array<Bottle> {
 		return this._bottles;
 	}
 
-	set bottles(bottles: Array<Bottle>) {
-		this._bottles = bottles;
+	set bottles(bottle: Array<Bottle>) {
+		this._bottles = bottle;
 	}
 
 	giveAway(givingId: number, hostId: number) {
@@ -82,5 +85,9 @@ export class GameLogic {
 		}
 
 		return false;
+	}
+
+	reload() {
+		this._bottles = this._config.bottles.map(item => new Bottle(item));
 	}
 }

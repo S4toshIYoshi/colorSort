@@ -14,6 +14,8 @@ const Game = () => {
 
 	const [popup, setPopup] = useState(false);
 
+	const [relaod, setReload] = useState(false);
+
 	const game = useMemo(() => {
 		if (config[ParamId.id ? parseInt(ParamId.id) - 1 : 0]) {
 			return new GameLogic(config[ParamId.id ? parseInt(ParamId.id) - 1 : 0]);
@@ -32,6 +34,11 @@ const Game = () => {
 		}
 	}, [select]);
 
+	if (relaod) {
+		game.reload();
+		setReload(false);
+	}
+
 	//setInterval(() => console.log(game.compilteLvl()), 1000);
 
 	return (
@@ -42,7 +49,7 @@ const Game = () => {
 						<Link to='/colorSort' className={style.back}>
 							Назад
 						</Link>
-						<div className={style.rebase} onClick={() => location.reload()}>
+						<div className={style.rebase} onClick={() => setReload(true)}>
 							<TfiReload />
 						</div>
 					</div>
