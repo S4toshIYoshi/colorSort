@@ -1,7 +1,6 @@
 import { FC } from 'react';
 import { Link } from 'react-router-dom';
 import style from './PopupEndLvl.module.scss';
-import { links } from '../../../../data/links';
 
 type Props = {
 	id: number;
@@ -15,14 +14,14 @@ const PopupEndlvl: FC<Props> = ({ id, setPopup }) => {
 				<div className={style.popuptitle}>Уровень {id} пройден!</div>
 				<div className={style.popupButtons}>
 					<Link
-						to={`${links[1]}/game/${id + 1}`}
+						to={`/colorSort/game/${id + 1}`}
 						onClick={() => {
 							if (setPopup) setPopup(false);
 						}}
 					>
 						Далее
 					</Link>
-					<Link to='/colorSort'>В меню</Link>
+					<Link to='/colorSort/'>В меню</Link>
 				</div>
 			</div>
 		</div>
